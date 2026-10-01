@@ -8,5 +8,5 @@ barcode_routes_bp = Blueprint("barcode_routes", __name__)
 @barcode_routes_bp.route("/barcode-generate", methods=["POST"])
 def barcode_generate():
     http_request = HttpRequest(body=request.json)
-    barcode_response = BarcodeGenerate.validate_and_generate(http_request)
+    barcode_response = BarcodeGenerate.validate_and_generate(request=http_request)
     return jsonify(barcode_response.body), barcode_response.status_code
